@@ -1,64 +1,114 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dải Ngân Hà Tình Yêu</title>
+  <title>Love Galaxy</title>
   <style>
     body {
       margin: 0;
+      background: radial-gradient(circle, #ffb6c1, #ff69b4, #ff1493);
       overflow: hidden;
-      background: black;
-      font-family: sans-serif;
+      font-family: 'Comic Sans MS', cursive;
+      color: white;
+      text-align: center;
     }
     .heart {
+      width: 20px;
+      height: 20px;
+      background: pink;
       position: absolute;
-      width: 50px;
-      height: 50px;
-      background-size: cover;
+      transform: rotate(45deg);
+      animation: float 10s linear infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: pink;
       border-radius: 50%;
-      animation: float 20s infinite linear;
+      position: absolute;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: -10px;
+      top: 0;
     }
     @keyframes float {
       0% {
-        transform: translateY(100vh) translateX(0);
+        transform: translateY(100vh) rotate(45deg);
       }
       100% {
-        transform: translateY(-100vh) translateX(100vw);
+        transform: translateY(-10vh) rotate(405deg);
       }
     }
-    .galaxy {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, #ff88cc, #330033);
-      animation: rotateGalaxy 60s linear infinite;
-      z-index: -1;
+    .image-float {
+      position: absolute;
+      width: 100px;
+      border-radius: 20px;
+      animation: orbit 20s linear infinite;
+      box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.6);
     }
-    @keyframes rotateGalaxy {
+    @keyframes orbit {
       0% {
-        transform: rotate(0deg);
+        transform: rotate(0deg) translateX(150px) rotate(0deg);
       }
       100% {
-        transform: rotate(360deg);
+        transform: rotate(360deg) translateX(150px) rotate(-360deg);
+      }
+    }
+    h1 {
+      margin-top: 40px;
+      font-size: 2em;
+      text-shadow: 2px 2px 8px #fff;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 10px;
+      color: #fff5f5;
+      text-shadow: 1px 1px 5px #ffb6c1;
+    }
+    .glow {
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4, 0 0 30px #ff69b4;
+      }
+      to {
+        text-shadow: 0 0 20px #ff69b4, 0 0 30px #ff69b4, 0 0 40px #ff69b4;
       }
     }
   </style>
 </head>
 <body>
-  <div class="galaxy"></div>
+  <h1 class="glow">Gửi vợ iu ❤️ Dải ngân hà này là dành cho em</h1>
+  <h2>Anhhh yêuuu emmm nhiềuuu lắmmm ❤️❤️🥲</h2>
+
+  <!-- Nhạc nền -->
+  <audio autoplay loop>
+    <source src="https://dl.dropboxusercontent.com/scl/fi/hm52dd27tyihsksdms7x5/I-Do-911.mp3?rlkey=6v0wd63kk03c0pt3wjzy5u6v1&raw=1" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Floating hearts -->
   <script>
-    const images = ["IMG_6526.jpeg", "IMG_6527.jpeg", "IMG_6528.jpeg"];
     for (let i = 0; i < 30; i++) {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.style.left = `${Math.random() * 100}vw`;
-      heart.style.top = `${Math.random() * 100}vh`;
-      heart.style.backgroundImage = `url(${images[i % images.length]})`;
-      heart.style.animationDuration = `${15 + Math.random() * 10}s`;
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
       document.body.appendChild(heart);
     }
   </script>
+
+  <!-- Floating images -->
+  <img src="IMG_6526%202.jpeg" class="image-float" style="top: 40%; left: 30%; animation-delay: 0s;" />
+  <img src="IMG_6527%202.jpeg" class="image-float" style="top: 50%; left: 60%; animation-delay: 2s;" />
+  <img src="IMG_6528%202.jpeg" class="image-float" style="top: 60%; left: 45%; animation-delay: 4s;" />
 </body>
 </html>
